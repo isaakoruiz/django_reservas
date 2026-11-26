@@ -144,3 +144,7 @@ LOGGING = {
     "reservas.peticiones": {"handlers": ["fichero"], "level": "INFO", "propagate": False},
     },
 }
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "reservas:lista"
+LOGOUT_REDIRECT_URL = "reservas:lista"
