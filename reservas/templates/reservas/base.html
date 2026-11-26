@@ -1,0 +1,16 @@
+{# reservas/templates/reservas/base.html #}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>{% block titulo %}Reservas{% endblock %} | IES Hontanilla</title>
+</head>
+<body>
+    <header>
+        <a href="{% url 'reservas:lista' %}">Espacios</a>
+    </header>
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+</body>
+</html>
