@@ -16,9 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
+
+from reservas.api import EspacioViewSet, ReservaViewSet
+
+
+router = DefaultRouter()
+router.register("espacios", EspacioViewSet, basename="espacio")
+router.register("reservas", ReservaViewSet, basename="reserva")
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("cuentas/", include("django.contrib.auth.urls")),
+    path("api/token/", obtain_auth_token, name="api-token"),
+    path("api/", include(router.urls)),
+    path("api-auth/", include("rest_framework.urls")),
     path("", include("reservas.urls")),
 ]
